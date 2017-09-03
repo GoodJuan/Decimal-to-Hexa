@@ -10,7 +10,6 @@ def decimalToHexa(inputDec):
     while inputDec > 0:
 
         tempNum = inputDec % 16
-        tempStr = ""
 
         if tempNum >= 10:
             tempNum = tempNum - 10
@@ -29,38 +28,40 @@ def hexaToDecimal(inputHexa):
     tempNum = 0
     hexaLen = len(inputHexa)
     index = hexaLen-1
-
+    correctChar = False
     while (hexaLen > 0):
         currentChar = inputHexa[index]
         try:
+            #this try catch block of code is to change the letters
+            #into numbers
             int(currentChar)
             currentChar = int(currentChar)
             tempNum = currentChar * 16 ** count
         except ValueError:
-            print("exception")
-
+            #This code runs if the code finds a character
+            currentChar.upper()
             for x in range(0, len(hexArray)):
                 if hexArray[x] == currentChar:
-                    print("this is the current: " + currentChar)
                     decimalVersion = x + 10
-                    #print("aisudasd" + decimalVersion)
                     tempNum = decimalVersion * 16 ** count
+                    correctChar = True
                     break
-
         tempNum = int(tempNum)
         finalDec = tempNum + finalDec
         index -= 1
         hexaLen -= 1
         count += 1
-    print(finalDec)
+    #printing the final converted hexa into decimal
+    finalDec = str(finalDec)
+    print("\n\nHere is your converted number: " + finalDec)
 
 
 
 
 while True:
     choice = input("Hello.\nWould you like to: "
-                     "\n1) Convert binary to hexadecimal."
-                     "\n2) Convert hexadecimal to binary."
+                     "\n1) Convert decimal to hexadecimal."
+                     "\n2) Convert hexadecimal to decimal."
                      "\n3) Exit.")
     if choice == 1:
         inputDec = input("\nPlease enter the decimal number you would like to convert: ")
