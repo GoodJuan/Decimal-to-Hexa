@@ -46,14 +46,16 @@ def hexaToDecimal(inputHexa):
                     tempNum = decimalVersion * 16 ** count
                     correctChar = True
                     break
-        tempNum = int(tempNum)
+            if correctChar == False:
+                print("Wrong input. Sorry try again.")
+                break
         finalDec = tempNum + finalDec
         index -= 1
         hexaLen -= 1
         count += 1
     #printing the final converted hexa into decimal
     finalDec = str(finalDec)
-    print("\n\nHere is your converted number: " + finalDec)
+    return finalDec
 
 
 
@@ -70,6 +72,7 @@ while True:
     elif choice == 2:
         inputHex = raw_input("\nPlease enter the hexadecimal number you would like to convert: ")
         hexaToDecimal(inputHex)
+        print("\nYour decimal number is this: "+ decimalToHexa(inputDec))
     elif choice == 3:
         print("bye")
         break
